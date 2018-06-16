@@ -1,3 +1,9 @@
+/*
+ Challenge 2: Is a string a palindrome?
+ Difficulty: Easy Write a function that accepts a String as its only parameter, and returns true if the string
+ reads the same when reversed, ignoring case. 
+ */
+
 import Foundation
 
 extension String{
