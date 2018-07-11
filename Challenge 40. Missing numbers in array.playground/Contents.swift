@@ -28,10 +28,23 @@ extension Array where Element == Int{
         
         return result
     }
+    
+    func missingNumber()->Element{
+        let sum = self.reduce(0, +)
+        let upperBound = self.max()!
+        let lowerBound = self.min()!
+        
+        //Gausse sum [(N * (N + 1)) / 2] - [(M * (M - 1)) / 2]
+        let upperLimitSum = (upperBound*(upperBound + 1)) / 2
+        let lowerLimitSum = (lowerBound*(lowerBound - 1)) / 2
+        
+        return (upperLimitSum - lowerLimitSum) - sum
+    }
 }
 
 var testArray = Array(1...100)
 testArray.remove(at: 25)
+testArray.missingNumber()
 testArray.remove(at: 20)
 testArray.remove(at: 6)
 
