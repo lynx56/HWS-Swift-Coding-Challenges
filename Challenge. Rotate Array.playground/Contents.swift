@@ -32,6 +32,20 @@ func rotate2(array: inout [Int], by k: Int){
     array = result
 }
 
+func rotate3(array: inout [Int], by k: Int){
+    guard array.count > 0, k > 0 else {
+        return
+    }
+    
+    let count = array.count
+    
+    array.insert(contentsOf: array.suffix(from: count - k % count), at: 0)
+    
+    array = Array(array.prefix(count))
+    
+    print(array)
+}
+
 
 func test(){
     var array1 = [1,2,3,4,5,6,7,8]
@@ -42,6 +56,10 @@ func test(){
     array1 = [1,2,3,4,5,6,7,8]
     rotate2(array: &array1, by: k)
     assert(array1 == [6,7,8,1,2,3,4,5])
+ 
+    array1 = [1,2,3,4,5,6,7,8]
+    rotate3(array: &array1, by: k)
+    assert(array1 == [6,7,8,1,2,3,4,5])
     
     array1 = [100, -90, 7, 1]
     k = 10
@@ -50,6 +68,10 @@ func test(){
  
     array1 = [100, -90, 7, 1]
     rotate2(array: &array1, by: k)
+    assert(array1 == [7,1,100,-90])
+    
+    array1 = [100, -90, 7, 1]
+    rotate3(array: &array1, by: k)
     assert(array1 == [7,1,100,-90])
 }
 
